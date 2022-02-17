@@ -13,7 +13,9 @@ async function init() {
   const input = document.getElementById('upload')
   const fileReader = new FileReader()
 
+  // Gets called when the file is loaded
   fileReader.onloadend = () => {
+    // Remove meta data. Replace it with an empty string
     let base64 = fileReader.result.replace(
       /^data:image\/(png|jpeg|jpg);base64,/, ''
     )
@@ -22,8 +24,9 @@ async function init() {
       'src', img_data_url
     )
   }
-
+  // Store image in the browser
   input.addEventListener('change', () => {
+    // Convert a binary file into a string
     fileReader.readAsDataURL(input.files[0])
   })
 }
